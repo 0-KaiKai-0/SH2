@@ -11,7 +11,7 @@ import ssl
 import urllib.request
 import zipfile
 
-from dola import DoLa
+from modeling import SH2
 
 def load_csv(file_path):
     # Format of each line:
@@ -64,7 +64,7 @@ device = args.device
 fp = args.data_path
 list_data_dict = load_csv(fp)
 
-llm = DoLa(model_name, device, num_gpus, args.max_gpu_memory)
+llm = SH2(model_name, device, num_gpus, args.max_gpu_memory)
 llm.set_stop_words(["Q:", "\end{code}"])
 
 
