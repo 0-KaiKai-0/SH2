@@ -7,7 +7,7 @@ OUTPUT_PATH=/home/jskai/workspace/datasets/$DATASET/$MODEL
 mkdir -p $OUTPUT_PATH
 cd ..
 
-CUDA_VISIBLE_DEVICES=4 python -u factor_keys.py \
+python -u factor_keys.py \
     --model-name /path/to/model \
     --data-path /path/to/data/$DATASET.csv \
     --output-path ${OUTPUT_PATH}/keys${KEY_NUM}.json \

@@ -338,10 +338,8 @@ class SH2:
 
         text_probs = outputs[range(outputs.shape[0]), shift_text]
         _, indices = torch.topk(text_probs, max(int(outputs.shape[0] * 0.015 * key_num), 1), largest=False, sorted=False)
-        # import pdb
-        # pdb.set_trace()
+
         indices = torch.from_numpy(np.random.choice(indices.cpu(), size=max(int(outputs.shape[0] * 0.01 * key_num), 1), replace=False))
-        # indices = torch.from_numpy(np.random.choice(shift_text.shape[0], size=max(int(outputs.shape[0] * 0.01 * key_num), 1), replace=False))
         indices, _ = torch.sort(indices, descending=False)
         sample_ids = shift_text[indices]
         return self.tokenizer.decode(sample_ids)

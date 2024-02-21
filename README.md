@@ -1,7 +1,7 @@
 SH2: Self-Highlighted Hesitation Helps You Decode More Truthfully
 ===
 
-## Environment Setup
+## Environment setup
 
 ```
 pip install -e transformers

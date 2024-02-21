@@ -8,7 +8,7 @@ cp factor_dola.sh $OUTPUT_DIR/run.sh
 
 cd ..
 
-CUDA_VISIBLE_DEVICES=1 python -u factor_eval.py \
+python -u factor_eval.py \
     --model-name /path/to/model \
     --data-path /path/to/data/$DATASET.csv \
     --early-exit-layers 0,2,4,6,8,10,12,14,32 \

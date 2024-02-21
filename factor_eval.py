@@ -257,9 +257,7 @@ if __name__ == "__main__":
         answers_false = []
         for i in range(3):
             answers_false.append(' ' + sample[f'contradiction_{i}'])
-        # if idx == 59:
-        # import pdb
-        # pdb.set_trace()
+
         answer_true_log_prob, c_dist = llm.lm_score(context, answer_true, input_text1_keys=input_text_keys, **generate_kwargs)
         if mode == "dola":
             for k, v in c_dist.items():

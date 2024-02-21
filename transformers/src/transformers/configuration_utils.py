@@ -371,6 +371,9 @@ class PretrainedConfig(PushToHubMixin):
         # Config hash
         self._commit_hash = kwargs.pop("_commit_hash", None)
 
+        # Attention implementation to use, if relevant.
+        self._attn_implementation_internal = kwargs.pop("attn_implementation", None)
+
         # Drop the transformers version info
         self.transformers_version = kwargs.pop("transformers_version", None)
 
@@ -418,6 +421,22 @@ class PretrainedConfig(PushToHubMixin):
         if not hasattr(self, "id2label") or self.id2label is None or len(self.id2label) != num_labels:
             self.id2label = {i: f"LABEL_{i}" for i in range(num_labels)}
             self.label2id = dict(zip(self.id2label.values(), self.id2label.keys()))
+
+    @property
+    def _attn_implementation(self):
+        # This property is made private for now (as it cannot be changed and a PreTrainedModel.use_attn_implementation method needs to be implemented.)
+        if hasattr(self, "_attn_implementation_internal"):
+            if self._attn_implementation_internal is None:
+                # `config.attn_implementation` should never be None, for backward compatibility.
+                return "eager"
+            else:
+                return self._attn_implementation_internal
+        else:
+            return "eager"
+
+    @_attn_implementation.setter
+    def _attn_implementation(self, value):
+        self._attn_implementation_internal = value
 
     def save_pretrained(self, save_directory: Union[str, os.PathLike], push_to_hub: bool = False, **kwargs):
         """
@@ -781,6 +800,9 @@ class PretrainedConfig(PushToHubMixin):
 
         self.dict_torch_dtype_to_str(serializable_config_dict)
 
+        if "_attn_implementation_internal" in serializable_config_dict:
+            del serializable_config_dict["_attn_implementation_internal"]
+
         return serializable_config_dict
 
     def to_dict(self) -> Dict[str, Any]:
@@ -797,6 +819,8 @@ class PretrainedConfig(PushToHubMixin):
             del output["_auto_class"]
         if "_commit_hash" in output:
             del output["_commit_hash"]
+        if "_attn_implementation_internal" in output:
+            del output["_attn_implementation_internal"]
 
         # Transformers version when serializing the model
         output["transformers_version"] = __version__
