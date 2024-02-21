@@ -8,8 +8,8 @@ mkdir -p $OUTPUT_PATH
 cd ..
 
 CUDA_VISIBLE_DEVICES=4 python -u factor_keys.py \
-    --model-name /home/jskai/workspace/models/$MODEL \
-    --data-path /home/jskai/workspace/factor/data/${DATASET}.csv \
+    --model-name /path/to/model \
+    --data-path /path/to/data/$DATASET.csv \
     --output-path ${OUTPUT_PATH}/keys${KEY_NUM}.json \
     --num-gpus 1 \
     --key-num $KEY_NUM \

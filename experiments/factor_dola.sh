@@ -9,8 +9,8 @@ cp factor_dola.sh $OUTPUT_DIR/run.sh
 cd ..
 
 CUDA_VISIBLE_DEVICES=1 python -u factor_eval.py \
-    --model-name /home/jskai/workspace/models/$MODEL \
-    --data-path /home/jskai/workspace/factor/data/$DATASET.csv \
+    --model-name /path/to/model \
+    --data-path /path/to/data/$DATASET.csv \
     --early-exit-layers 0,2,4,6,8,10,12,14,32 \
     --output-path experiments/$OUTPUT_DIR/output.json \
     --num-gpus 1 \
