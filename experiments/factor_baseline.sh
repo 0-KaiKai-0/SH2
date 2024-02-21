@@ -1,6 +1,6 @@
 RUN_NAME=baseline
 DATASET=news_factor # or wiki_factor
-MODEL=LLaMA_hf_7B # or LLaMA2_hf_7B or Mistral-7B-v0.1
+MODEL=LLaMA_hf_7B # LLaMA2_hf_7B or Mistral-7B-v0.1
 OUTPUT_DIR=outputs/$DATASET/$MODEL/$RUN_NAME
 
 mkdir -p $OUTPUT_DIR
