@@ -1,5 +1,5 @@
 **S**elf-**H**ighlighted **H**esitation (SH2)
-![img](framework.jpg)
+![image](framework.jpg)
 ===
 Code for the paper [SH2: Self-Highlighted Hesitation Helps You Decode More Truthfully](https://arxiv.org/abs/2401.05930)
 
@@ -28,7 +28,7 @@ bash factor_hard.sh
 bash factor_baseline.sh
 ```
 
-- DoLa (Official Repo: https://github.com/voidism/DoLa)
+- DoLa (Repo: https://github.com/voidism/DoLa)
 ```
 bash factor_dola.sh
 ```
