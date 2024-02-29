@@ -1,5 +1,7 @@
-SH2: Self-Highlighted Hesitation Helps You Decode More Truthfully
+**S**elf-**H**ighlighted **H**esitation (SH2)
+![img](framework.jpg)
 ===
+Code for the paper [SH2: Self-Highlighted Hesitation Helps You Decode More Truthfully](https://arxiv.org/abs/2401.05930)
 
 ## Environment setup
 
@@ -15,18 +17,29 @@ pip install openai # -> only for truthfulqa and gpt4_eval
 cd experiments # running scripts
 ```
 
-- Baseline: LLaMA_hf_7B, LLaMA2_hf_7B or Mistral-7B-v0.1
+- **SH2**
+```
+bash factor_keys.sh # prepare key tokens
+bash factor_hard.sh
+```
+
+- Baseline: LLaMA_7B, LLaMA2_7B or Mistral-7B-v0.1
 ```
 bash factor_baseline.sh
 ```
 
-- DoLa
+- DoLa (Official Repo: https://github.com/voidism/DoLa)
 ```
 bash factor_dola.sh
 ```
 
-- SH2
+## Citation
+If you find this work helpful, please cite our paper:
 ```
-bash factor_keys.sh # prepare key tokens
-bash factor_hard.sh
+@article{kai2024sh2,
+  title={SH2: Self-Highlighted Hesitation Helps You Decode More Truthfully},
+  author={Kai, Jushi and Zhang, Tianhang and Hu, Hai and Lin, Zhouhan},
+  journal={arXiv preprint arXiv:2401.05930},
+  year={2024}
+}
 ```
