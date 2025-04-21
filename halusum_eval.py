@@ -18,7 +18,7 @@ import urllib.request
 import zipfile
 import tiktoken
 
-from dola import DoLa
+from modeling import SH2
 
 transformers.logging.set_verbosity(40)
 
@@ -195,7 +195,7 @@ if __name__ == "__main__":
     if args.pondering is not None:
         list_data_dict_keys = load_jsonl(fp, pondering=args.pondering, keys_path=args.keys_path)
 
-    llm = DoLa(model_name, device, num_gpus, args.max_gpu_memory)
+    llm = SH2(model_name, device, num_gpus, args.max_gpu_memory)
     stop_word_list = ["#Document#:", "#Pondering#:"]
     llm.set_stop_words(stop_word_list)
     early_exit_layers = [int(x) for x in args.early_exit_layers.split(',')]

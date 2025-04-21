@@ -11,7 +11,7 @@ import ssl
 import urllib.request
 import zipfile
 
-from dola import DoLa
+from modeling import SH2
 
 def load_csv(file_path, is_gzip=False):
     # input file is in csv format, can be loaded by pandas
@@ -56,7 +56,7 @@ if not os.path.exists(fp):
 list_data_dict = load_csv(fp)
 
 
-llm = DoLa(model_name, device, num_gpus, args.max_gpu_memory)
+llm = SH2(model_name, device, num_gpus, args.max_gpu_memory)
 stop_word_list = ["Q:"]
 llm.set_stop_words(stop_word_list)
 

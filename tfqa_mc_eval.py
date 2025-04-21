@@ -18,7 +18,7 @@ import ssl
 import urllib.request
 import zipfile
 
-from dola import DoLa
+from modeling import SH2
 
 transformers.logging.set_verbosity(40)
 
@@ -282,7 +282,7 @@ if __name__ == "__main__":
             chunk_size = len(list_data_dict_keys) // args.total_shard
             list_data_dict_keys = list_data_dict_keys[args.shard_id * chunk_size: (args.shard_id + 1) * chunk_size]
 
-    llm = DoLa(model_name, device, num_gpus, args.max_gpu_memory)
+    llm = SH2(model_name, device, num_gpus, args.max_gpu_memory)
     stop_word_list = ["Q:"]
     llm.set_stop_words(stop_word_list)
     early_exit_layers = [int(x) for x in args.early_exit_layers.split(',')]

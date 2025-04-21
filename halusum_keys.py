@@ -11,7 +11,7 @@ import ssl
 import urllib.request
 import zipfile
 
-from dola import DoLa
+from modeling import SH2
 
 
 def load_jsonl(file_path):
@@ -47,7 +47,7 @@ fp = args.data_path
 list_data = load_jsonl(fp)
 
 
-llm = DoLa(model_name, device, num_gpus, args.max_gpu_memory)
+llm = SH2(model_name, device, num_gpus, args.max_gpu_memory)
 stop_word_list = ["#Document#:", "#Pondering#:"]
 llm.set_stop_words(stop_word_list)
 
